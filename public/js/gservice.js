@@ -86,7 +86,7 @@ var initialize = function(latitude, longitude) {
                 if (status === google.maps.GeocoderStatus.OK) {
                     if (results[0]) {
                         infowindow.setContent(results[0].formatted_address);
-                        address = results[0].formatted_address;
+                        address = results[0].formatted_address.split(',')[0];
                         googleMapService.address = address;
                         $rootScope.$broadcast("clicked");
                     } else {
@@ -106,7 +106,7 @@ var initialize = function(latitude, longitude) {
 
         // Create a new map and place in the index.html page
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 13,
+            zoom: 18,
             center: myLatLng
         });
      }
@@ -171,7 +171,7 @@ var initialize = function(latitude, longitude) {
                 if (status === google.maps.GeocoderStatus.OK) {
                     if (results[0]) {
                         infowindow.setContent(results[0].formatted_address);
-                        address = results[0].formatted_address;
+                        address = results[0].formatted_address.split(',')[0];
                         googleMapService.address = address;
                         $rootScope.$broadcast("clicked");
                     } else {

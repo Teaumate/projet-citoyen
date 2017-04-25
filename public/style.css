@@ -12,5 +12,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: normal;
-    width: 75%;
+    width: 50%;
+}
+
+select {
+    margin-top: 7.5px;
+    color: black;
 }

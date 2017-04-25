@@ -4,6 +4,9 @@
     <!-- Default panel contents -->
     <div class="panel-heading clearfix">
         <h4 class="panel-title pull-left">Adresse: {{address}}</h4>
+    <select ng-model="selectedName" ng-options="x for x in option">
+      <option value="">---Please select---</option>
+    </select>
         <button class="btn btn-default pull-right" ng-click="createUser()">New</button>
     </div>
     <!-- Google Map -->

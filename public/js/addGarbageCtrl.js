@@ -4,7 +4,7 @@ angular.module('addGarbage', ['geolocation', 'gservice'])
     // Initializes Variables
     // ----------------------------------------------------------------------------
     var coords = {};
-
+    $scope.option = ["mobilier", "matelas", "sommier", "électroménager "];
     // Set initial coordinates to the center of Bdx
     $scope.latitude = 44.843;
     $scope.longitude = -0.595;
@@ -47,7 +47,7 @@ angular.module('addGarbage', ['geolocation', 'gservice'])
             username: $scope.username,
             adresse: $scope.adresse,
             tel: $scope.tel,
-            volume: $scope.typeEncombrant,
+            volume: $scope.selectedName,
             rdv: $scope.rdv,
             location: [coords.long, coords.lat],
             htmlverified: $scope.htmlverified
