@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app="mainApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDswVm-k7UXDFZzQz2Gwh6ijCTHPy3HzMI"></script>
+    <!-- Modernizr -->
+    <script src="../node_modules/modernizr/bin/modernizr"></script>
+    <!-- JS Source -->
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/angular-touch/angular-touch.js"></script>
+    <script src="../node_modules/angular-route/angular-route.js"></script>
+    <script src="../node_modules/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
+    <script src="./js/gservice.js"></script>
+    <script src="./js/addUserCtrl.js"></script>
+    <script src="./js/addGarbageCtrl.js"></script>
+    <script src="./js/app.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row content">
+        <div ng-view></div>
+    </div>
+</div>
+</body>
+</html>

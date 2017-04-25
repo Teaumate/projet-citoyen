@@ -1,0 +1,16 @@
+#map {
+    height: 100%;
+}
+
+.panel {
+    height: 100vh;
+}
+
+.panel-title{
+    padding-top: 7.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: normal;
+    width: 75%;
+}
