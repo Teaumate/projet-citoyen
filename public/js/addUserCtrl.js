@@ -12,7 +12,23 @@ addCtrl.controller('addUserCtrl',['$scope', '$http', '$rootScope', 'geolocation'
     // Set initial coordinates to the center of the Bdx
     $scope.formData.latitude = 44.838;
     $scope.formData.longitude = -0.577;
-    
+
+      $scope.geolocate = function() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var geolocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            var circle = new google.maps.Circle({
+              center: geolocation,
+              radius: position.coords.accuracy
+            });
+            autocomplete.setBounds(circle.getBounds());
+          });
+        }
+      };
+      
     // Get User's actual coordinates based on HTML5 at window load
     geolocation.getLocation().then(function(data){
 

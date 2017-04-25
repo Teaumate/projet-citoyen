@@ -37,6 +37,8 @@ angular.module('addGarbage', ['geolocation', 'gservice'])
             $scope.htmlverified = "Nope (Thanks for spamming my map...)";
             $scope.adresse = gservice.address;
             $scope.address = gservice.address;
+            coords.long = $scope.longitude;
+            coords.lat = $scope.latitude;
         });
 
     });
