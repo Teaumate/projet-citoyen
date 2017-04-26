@@ -1,5 +1,5 @@
 // Creates the addCtrl Module and Controller. Note that it depends on the 'geolocation' module and service.
-var addCtrl = angular.module('addUserCtrl', ['geolocation']);
+var addCtrl = angular.module('addUserCtrl', ['geolocation', 'ngAnimate', 'ui.bootstrap']);
 addCtrl.controller('addUserCtrl',['$scope', '$http', '$rootScope', 'geolocation', function($scope, $http, $rootScope, geolocation){
 
     // Initializes Variables
@@ -78,7 +78,7 @@ addCtrl.controller('addUserCtrl',['$scope', '$http', '$rootScope', 'geolocation'
             adresse: $scope.formData.adresse,
             tel: $scope.formData.tel,
             volume: $scope.formData.typeEncombrant,
-            rdv: $scope.formData.rdv,
+            rdv: $scope.dt,
             location: [$scope.formData.longitude, $scope.formData.latitude],
             htmlverified: $scope.formData.htmlverified
         };
@@ -88,16 +88,53 @@ addCtrl.controller('addUserCtrl',['$scope', '$http', '$rootScope', 'geolocation'
             .then(function (data) {
 
                 // Once complete, clear the form (except location)
-                $scope.formData.username = "";
-                $scope.formData.adresse = "";
-                $scope.formData.tel = "";
-                $scope.formData.typeEncombrant = "";
-                $scope.formData.rdv = "";
+                // $scope.formData.username = "";
+                // $scope.formData.adresse = "";
+                // $scope.formData.tel = "";
+                // $scope.formData.typeEncombrant = "";
+                // $scope.formData.rdv = "";
             }, function (data) {
                 console.log('Error: ' + data);
             });
     };
-    $scope.createUse = function(){
-        console.log($scope.formData);
+
+// gestion du calendrier -------------
+//------------------------------------
+    $scope.dt = new Date();
+
+    var d = new Date();
+    d.setDate(d.getDate() + 10);
+
+  $scope.options = {
+    dateDisabled: disabled,
+    minDate: new Date(),
+    maxDate: d,
+    showWeeks: true,
+    startingDay: 1
+  };
+
+  // Disable weekend selection
+  function disabled(data) {
+    var date = data.date,
+      mode = data.mode;
+    return mode === 'day' && (date.getDay() === 0);// || date.getDay() === 6);
+  }
+
+  function getDayClass(data) {
+    var date = data.date,
+      mode = data.mode;
+    if (mode === 'day') {
+      var dayToCheck = new Date(date).setHours(0,0,0,0);
+
+      for (var i = 0; i < $scope.events.length; i++) {
+        var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+
+        if (dayToCheck === currentDay) {
+          return $scope.events[i].status;
+        }
+      }
     }
+
+    return '';
+  }
 }]);

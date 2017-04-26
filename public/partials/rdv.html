@@ -40,24 +40,14 @@
                             <label for="tel">Tel</label>
                             <input type="number" class="form-control" id="tel" placeholder="0653982546" ng-model="formData.tel" min="0" max="9999999999" required>
                         </div>
-<div ng-controller="DatepickerDemoCtrl">
-    <div class="form-group">
-        <label for="rdv">rdv</label>
-        <input type="text" class="form-control" id="rdv" ng-value={{dt}} ng-model="formData.rdv">
-        
-    </div>
-    <pre>Selected date is: <em>{{dt  }}</em></pre>
-
-    <div style="display:inline-block; min-height:290px;">
-      <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
-    </div>
-</div>
-                        <div class="form-group">
-                            <label for="verified">HTML5 Verified Location? <span><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-refresh"></span></button></span></label>
-                            <input type="text" class="form-control" id="verified" placeholder= "Nope (Thanks for spamming my map...)" ng-model="formData.htmlverified" readonly>
+                        <div >
+                            <pre>Date du rdv: <em>{{dt | date:'dd-MM-yyyy' }}</em></pre>
+                            <div style="display:inline-block; min-height:290px;">
+                            <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
+                            </div>
                         </div>
                         <!-- Submit button. Note that its tied to createUser() function from addCtrl. Also note ng-disabled logic which prevents early submits.  -->
-                        <button type="submit" class="btn btn-danger btn-block" ng-click="createUse()" ng-disabled="addForm.$invalid">Submit</button>
+                        <button type="submit" class="btn btn-danger btn-block" ng-click="createUser()" ng-disabled="addForm.$invalid">Submit</button>
                     </form>
                 </div>
             </div>
