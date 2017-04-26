@@ -1,4 +1,4 @@
-angular.module('mainApp', ['AUD', 'ngRoute', 'ngTouch', 'addGarbage', 'addUserCtrl', 'geolocation', 'gservice'])
+angular.module('mainApp', ['AUD', 'adminModule', 'ui.bootstrap', 'ngRoute', 'ngTouch', 'addGarbage', 'addUserCtrl', 'geolocation', 'gservice'])
              .config(['$locationProvider', '$routeProvider', function config($locationProvider, $routeProvider) {
       $locationProvider.hashPrefix('!');
 

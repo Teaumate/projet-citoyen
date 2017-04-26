@@ -72,7 +72,6 @@ addCtrl.controller('addUserCtrl',['$scope', '$http', '$rootScope', 'geolocation'
 
     // Creates a new user based on the form fields
     $scope.createUser = function() {
-
         // Grabs all of the text box fields
         var userData = {
             username: $scope.formData.username,
@@ -98,4 +97,7 @@ addCtrl.controller('addUserCtrl',['$scope', '$http', '$rootScope', 'geolocation'
                 console.log('Error: ' + data);
             });
     };
+    $scope.createUse = function(){
+        console.log($scope.formData);
+    }
 }]);

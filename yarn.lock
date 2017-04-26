@@ -20,6 +20,10 @@ ajv@^4.9.1:
     co "^4.6.0"
     json-stable-stringify "^1.0.1"
 
+angular-animate@^1.6.4:
+  version "1.6.4"
+  resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.6.4.tgz#d3eb906d39834f2dfbdd982e6b8d7a3b4d9001d2"
+
 angular-route@^1.6.4:
   version "1.6.4"
   resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.6.4.tgz#7bb216fcda746a1b8c452054b05900a7074ecc62"
@@ -27,6 +31,10 @@ angular-route@^1.6.4:
 angular-touch@^1.6.4:
   version "1.6.4"
   resolved "https://registry.yarnpkg.com/angular-touch/-/angular-touch-1.6.4.tgz#02750fccf77ca0ed949a6d1321263abb0f86b223"
+
+angular-ui-bootstrap@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/angular-ui-bootstrap/-/angular-ui-bootstrap-2.5.0.tgz#2facefb915386655dc5f44150258032517236d01"
 
 angular@^1.6.4:
   version "1.6.4"
