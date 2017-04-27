@@ -4,29 +4,30 @@
       <div class="btn-group pull-right">
         <a href="#" class="btn btn-default btn-sm">## Lock</a>
         <a href="#" class="btn btn-default btn-sm">## Delete</a>
-        <a href="#" class="btn btn-default btn-sm">## Move</a>
+        <a href="#" class="btn btn-default btn-sm">## God Mode</a>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
       </div>
     </div>
     <table class="table table-condensed">
         <thead>
             <tr>
-                <th class="col-md-1">Column 1</th>
-                <th>Message</th>
+                <th class="col-md-1" ng-click="orderBy('username')">username</th>
+                <th ng-click="orderBy('tel')">tel</th>
+                <th ng-click="orderBy('adresse')">adresse</th>
+                <th ng-click="orderBy('volume')">volume</th>
+                <th ng-click="orderBy('rdv')">rdv</th>
+                <th ng-click="orderBy('etat')">etat</th>
             </tr>
         </thead>
         <tbody>
-                <tr>
-                    <td>Data</td>
-                    <td>Content</td>
-                </tr>
-                <tr>
-                    <td>Data</td>
-                    <td>Content</td>
-                </tr>
-                <tr>
-                    <td>Data</td>
-                    <td>Content</td>
-                </tr>
+    <tr ng-repeat="x in res | orderBy:ordre ">
+        <td>{{x.username}}</td>
+        <td>{{x.tel}}</td>
+        <td>{{x.adresse}}</td>
+        <td>{{x.volume}}</td>
+        <td>{{x.rdv | date:'dd-MM-yyyy à h:mm' }}</td>
+        <td><input type="checkbox" ng-model=x.etat ng-click="update(x)"></tr>
+    </tr>
         </tbody>
     </table>
 </div>

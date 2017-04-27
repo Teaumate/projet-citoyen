@@ -39,4 +39,16 @@ module.exports = function(app) {
             res.json(req.body);
         });
     });
+    app.put('/users', function(req, res){
+
+        var query = User.update({_id:req.body.id},{etat:req.body.etat});
+        // New User is saved in the db.
+        query.exec(function(err, users){
+            if(err)
+                res.send(err);
+
+            // If no errors are found, it responds with a JSON of all users
+            res.json(users);
+        });
+    });
 };  

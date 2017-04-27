@@ -8,6 +8,7 @@ var garbageSchema = new Schema({
     volume: {type: String, required: false},
     rdv: {type: Date, required: false},
     location: {type: [Number], required: false}, // [Long, Lat]
+    etat: {type:Boolean, required: false} ,
     htmlverified: String,
     created_at: {type: Date, default: Date.now},
     updated_at: {type: Date, default: Date.now}
@@ -27,5 +28,5 @@ garbageSchema.pre('save', function(next){
 // Indexes this schema in 2dsphere format (critical for running proximity searches)
 garbageSchema.index({location: '2dsphere'});
 
-// Exports the garbageSchema for use elsewhere. Sets the MongoDB collection to be used as: "scotch-users"
+// Exports the garbageSchema for use elsewhere. Sets the MongoDB collection to be used as: "garbage-user"
 module.exports = mongoose.model('garbage-user', garbageSchema);
