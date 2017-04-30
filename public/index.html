@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="google-signin-client_id" content="759674817335-01ld6t50cjdq59b04959qkpsbeksvl6l.apps.googleusercontent.com">
     <title>Document</title>
     <!-- CSS -->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -12,7 +11,6 @@
     <!-- Modernizr -->
     <script src="../node_modules/modernizr/bin/modernizr"></script>
     <!-- JS Source -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="../node_modules/angular/angular.js"></script>
     <script src="../node_modules/angular-touch/angular-touch.js"></script>
     <script src="../node_modules/angular-route/angular-route.js"></script>
@@ -28,12 +26,12 @@
 </head>
 <body>
 <div class="container">
-    <div class="row content"><div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <div class="row content">
         <div ng-view></div>
     </div>
 </div>
     <!-- Google Maps API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDswVm-k7UXDFZzQz2Gwh6ijCTHPy3HzMI&libraries=places"></script>
-
+    
 </body>
 </html>
