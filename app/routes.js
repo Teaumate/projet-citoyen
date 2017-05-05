@@ -4,8 +4,10 @@ mongoose.Promise    = require('bluebird');
 var User            = require('./model.js');
 
 // Opens App Routes
-module.exports = function(app) {
-
+module.exports = function(app, passport) {
+    app.get('/social', function(req, res){
+		res.render('social.ejs');
+    });
     // GET Routes
     // --------------------------------------------------------
     // Retrieve records for all users in the db
@@ -39,10 +41,14 @@ module.exports = function(app) {
             res.json(req.body);
         });
     });
+
+    // PUT Routes
+    // --------------------------------------------------------
+    // Provides method for saving new users in the db
     app.put('/users', function(req, res){
 
         var query = User.update({_id:req.body.id},{etat:req.body.etat});
-        // New User is saved in the db.
+        // update User 
         query.exec(function(err, users){
             if(err)
                 res.send(err);
@@ -51,4 +57,52 @@ module.exports = function(app) {
             res.json(users);
         });
     });
-};  
+
+	// twitter --------------------------------
+
+		// send to twitter to do the authentication
+		app.get('/auth/twitter', passport.authenticate('twitter', { scope : 'email' }));
+
+		// handle the callback after twitter has authenticated the user
+		app.get('/auth/twitter/callback',
+			passport.authenticate('twitter', {
+				successRedirect : '/#!main',
+				failureRedirect : '/'
+			}));
+
+// =============================================================================
+// AUTHORIZE (ALREADY LOGGED IN / CONNECTING OTHER SOCIAL ACCOUNT) =============
+// =============================================================================
+
+	// twitter --------------------------------
+
+		// send to twitter to do the authentication
+		app.get('/connect/twitter', passport.authorize('twitter', { scope : 'email' }));
+
+		// handle the callback after twitter has authorized the user
+		app.get('/connect/twitter/callback',
+			passport.authorize('twitter', {
+				successRedirect : '/#!/main',
+				failureRedirect : '/'
+			}));
+// =============================================================================
+// UNLINK ACCOUNTS =============================================================
+// =============================================================================
+
+	// twitter --------------------------------
+	app.get('/unlink/twitter', function(req, res) {
+		var user           = req.user;
+		user.twitter.token = undefined;
+		user.save(function(err) {
+			res.redirect('/profile');
+		});
+	});
+};
+
+// route middleware to ensure user is logged in
+function isLoggedIn(req, res, next) {
+	if (req.isAuthenticated())
+		return next();
+
+	res.redirect('/');
+}

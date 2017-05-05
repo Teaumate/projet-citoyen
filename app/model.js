@@ -1,14 +1,14 @@
-var mongoose        = require("mongoose");
+var mongoose    = require("mongoose");
 var Schema      = mongoose.Schema;
 
 var garbageSchema = new Schema({
     username: {type: String, required: false},
-    adresse: {type: String, required: false},
-    tel: {type: String, required: false},
-    volume: {type: String, required: false},
-    rdv: {type: Date, required: false},
+    adresse:  {type: String, required: false},
+    tel:      {type: String, required: false},
+    volume:   {type: String, required: false},
+    rdv:      {type: Date, required: false},
     location: {type: [Number], required: false}, // [Long, Lat]
-    etat: {type:Boolean, required: false} ,
+    etat:     {type: Boolean, required: false} ,
     htmlverified: String,
     created_at: {type: Date, default: Date.now},
     updated_at: {type: Date, default: Date.now}
