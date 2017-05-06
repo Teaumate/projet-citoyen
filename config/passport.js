@@ -29,7 +29,13 @@ module.exports = function(passport) {
             done(err, user);
         });
     });
-
+    // Define a middleware function to be used for every secured routes
+    var auth = function(req, res, next){
+    if (!req.isAuthenticated()) 
+        res.send(401);
+    else
+        next();
+    };
     // =========================================================================
     // LOCAL LOGIN =============================================================
     // =========================================================================
