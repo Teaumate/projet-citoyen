@@ -100,11 +100,11 @@ angular.module('mainApp', ['AUD', 'adminModule', 'ui.bootstrap', 'ngRoute', 'ngT
     }
   ]) // end of config()
   .run(function($rootScope, $http){
-    $rootScope.message = '';
+      $rootScope.message = '';
 
-    // Logout function is available in any pages
-    $rootScope.logout = function(){
-      $rootScope.message = 'Logged out.';
-      $http.post('/logout');
-    };
+      // Logout function is available in any pages
+      $rootScope.logout = function(){
+        $rootScope.message = 'Logged out.';
+        $http.post('/logout');
+      };
   });

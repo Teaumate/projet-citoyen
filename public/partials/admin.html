@@ -2,20 +2,19 @@
     <div class="panel-heading clearfix">
       <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Panel header</h4>
       <div class="btn-group pull-right">
-        <a href="#" class="btn btn-default btn-sm">## Lock</a>
-        <a href="#" class="btn btn-default btn-sm">## Delete</a>
+        <a href="#" class="btn btn-default btn-sm">Carte</a>
         <a href="/" class="btn btn-default btn-sm" ng-click="logout()">Logout</a>
       </div>
     </div>
     <table class="table table-condensed">
         <thead>
             <tr>
-                <th class="col-md-1" ng-click="orderBy('username')">username</th>
-                <th ng-click="orderBy('tel')">tel</th>
-                <th ng-click="orderBy('adresse')">adresse</th>
-                <th ng-click="orderBy('volume')">volume</th>
-                <th ng-click="orderBy('rdv')">rdv</th>
-                <th ng-click="orderBy('etat')">etat</th>
+                <th class="col-md-1" ng-click="orderBy('username')">username <i class="fa fa-sort" aria-hidden="true"></i></th>
+                <th ng-click="orderBy('tel')">tel <i class="fa fa-sort" aria-hidden="true"></i></th>
+                <th ng-click="orderBy('adresse')">adresse <i class="fa fa-sort" aria-hidden="true"></i></th>
+                <th ng-click="orderBy('volume')">volume <i class="fa fa-sort" aria-hidden="true"></i></th>
+                <th ng-click="orderBy('rdv')">rdv <i class="fa fa-sort" aria-hidden="true"></i></th>
+                <th ng-click="orderBy('etat')">etat <i class="fa fa-sort" aria-hidden="true"></i></th>
             </tr>
         </thead>
         <tbody>

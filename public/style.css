@@ -1,3 +1,4 @@
+.nav, .pagination, .fa, .panel-title a { cursor:pointer ; }
 #map {
     height: 100%;
 }

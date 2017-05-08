@@ -4,7 +4,7 @@ var mongoose        = require("mongoose");
 var port            = process.env.PORT || 8080;
 var bodyParser      = require('body-parser');
 //var cookieParser    = require('cookie-parser');
-var session         = require('express-session')
+var session         = require('express-session');
 var passport        = require('passport');
 var flash           = require('connect-flash');
 
@@ -30,7 +30,7 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 // set the view engine to ejs
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs');
 // Routes
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 // Listen 
