@@ -8,7 +8,17 @@ addCtrl.controller('addUserCtrl',['$scope', '$http', '$rootScope', 'geolocation'
     var coords = {};
     var lat = 0;
     var long = 0;
-
+    $http.get('/loggedin').then(function(user){
+      // Authenticated
+      if (user.data !== '0'){
+        if (user.data.hasOwnProperty('facebook'))
+          $scope.formData.username = user.data.facebook.name;
+        if (user.data.hasOwnProperty('google'))
+          $scope.formData.username = user.data.google.name;
+        if (user.data.hasOwnProperty('twitter'))
+          $scope.formData.username = user.data.twitter.displayName;
+      }
+    });
     // Set initial coordinates to the center of the Bdx
     $scope.formData.latitude = 44.838;
     $scope.formData.longitude = -0.577;

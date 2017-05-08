@@ -1,5 +1,5 @@
 angular.module('mainApp', ['AUD', 'adminModule', 'ui.bootstrap', 'ngRoute', 'ngTouch', 'addGarbage', 'addUserCtrl', 'geolocation', 'gservice'])
-             .config(['$locationProvider', '$routeProvider', '$httpProvider', function config($locationProvider, $routeProvider, $httpProvider) {
+  .config(['$locationProvider', '$routeProvider', '$httpProvider', function config($locationProvider, $routeProvider, $httpProvider) {
       $locationProvider.hashPrefix('!');
     //================================================
     // Check if the user is connected
@@ -13,23 +13,46 @@ angular.module('mainApp', ['AUD', 'adminModule', 'ui.bootstrap', 'ngRoute', 'ngT
         // Authenticated
         if (user.data !== '0'){
           /*$timeout(deferred.resolve, 0);*/
-          console.log(user);
+          console.log($location.path());
           deferred.resolve();
 
         // Not Authenticated
       }else {
-          console.log('not loggedin');
+          console.log($location.path());
           $rootScope.message = 'You need to log in.';
           //$timeout(function(){deferred.reject();}, 0);
           deferred.reject();
-          $location.url('/auth');
+          $location.url('/main');
         }
       });
 
       return deferred.promise;
     };
     //================================================
-    
+    var checkAdmin = function($q, $timeout, $http, $location, $rootScope){
+      // Initialize a new promise
+      var deferred = $q.defer();
+
+      // Make an AJAX call to check if the user is logged in
+      $http.get('/isAdmin').then(function(user){
+        // Authenticated
+        if (user.data !== '0'){
+          /*$timeout(deferred.resolve, 0);*/
+          console.log($location.path());
+          deferred.resolve();
+
+        // Not Authenticated
+      }else {
+          console.log($location.path());
+          $rootScope.message = 'You need to log in.';
+          //$timeout(function(){deferred.reject();}, 0);
+          deferred.reject();
+          $location.url('/main');
+        }
+      });
+
+      return deferred.promise;
+    };
     //================================================
     // Add an interceptor for AJAX errors
     //================================================
@@ -56,7 +79,7 @@ angular.module('mainApp', ['AUD', 'adminModule', 'ui.bootstrap', 'ngRoute', 'ngT
           controller: 'adminCtrl',
           templateUrl: 'partials/admin.html',
           resolve: {
-            loggedin: checkLoggedin
+            loggedin: checkAdmin
           }
         }).
         when('/main', {
@@ -73,7 +96,7 @@ angular.module('mainApp', ['AUD', 'adminModule', 'ui.bootstrap', 'ngRoute', 'ngT
         when('/auth', {
             templateUrl: 'partials/auth.html'
         }).
-        otherwise('/auth');
+        otherwise('/main');
     }
   ]) // end of config()
   .run(function($rootScope, $http){
@@ -85,4 +108,3 @@ angular.module('mainApp', ['AUD', 'adminModule', 'ui.bootstrap', 'ngRoute', 'ngT
       $http.post('/logout');
     };
   });
-

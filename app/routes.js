@@ -7,6 +7,10 @@ var User            = require('./model.js');
 module.exports = function(app, passport) {
 
     //==================================================================
+    // route to test if the user is admin in or not
+    app.get('/isAdmin', function(req, res) {
+        res.send((req.isAuthenticated() && req.user.google.email==="charlotte14@gmail.com") ? req.user : '0');
+    });
     // route to test if the user is logged in or not
     app.get('/loggedin', function(req, res) {
         res.send(req.isAuthenticated() ? req.user : '0');
@@ -16,8 +20,8 @@ module.exports = function(app, passport) {
         req.logOut();
         res.sendStatus(200);
     });
-    app.get('/social', function(req, res){
-		res.render('social.ejs');
+    app.get('/social', function(req, res, next){
+		isLoggedIn(req, res, next);
     });
     // GET Routes
     // --------------------------------------------------------
@@ -190,8 +194,9 @@ module.exports = function(app, passport) {
 }
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
-	if (req.isAuthenticated())
-		return next();
-
+	if (req.isAuthenticated()){
+		res.send(req.isAuthenticated() ? req.user : '0');
+        next();
+}
 	res.redirect('/');
 }
