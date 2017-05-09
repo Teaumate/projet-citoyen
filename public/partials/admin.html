@@ -18,14 +18,14 @@
             </tr>
         </thead>
         <tbody>
-    <tr ng-repeat="x in res | orderBy:ordre ">
-        <td>{{x.username}}</td>
-        <td>{{x.tel}}</td>
-        <td>{{x.adresse}}</td>
-        <td>{{x.volume}}</td>
-        <td>{{x.rdv | date:'dd-MM-yyyy à h:mm' }}</td>
-        <td><input type="checkbox" ng-model=x.etat ng-click="update(x)"></tr>
-    </tr>
+            <tr ng-repeat="x in res | orderBy:ordre ">
+                <td>{{x.username}}</td>
+                <td>{{x.tel}}</td>
+                <td>{{x.adresse}}</td>
+                <td>{{x.volume}}</td>
+                <td>{{x.rdv | date:'dd-MM-yyyy à h:mm' }}</td>
+                <td><input type="checkbox" ng-model=x.etat ng-click="update(x)"></tr>
+            </tr>
         </tbody>
     </table>
 </div>

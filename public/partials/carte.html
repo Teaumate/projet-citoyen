@@ -1,0 +1,16 @@
+<div class="col-md-7">
+<div class="panel panel-primary">
+    <!-- Default panel contents -->
+    <div class="panel-heading clearfix">
+        <h4 class="panel-title pull-left">Adresse: {{address}}</h4>
+        <div>
+            <select ng-model="selectedName" ng-options="x for x in option">
+            <option value="">---Please select---</option>
+            </select>
+            <span class="" ng-click="createUser()"><i class="fa fa-recycle" aria-hidden="true"></i></span>
+        </div>
+    </div>
+    <!-- Google Map -->
+    <div id="map"></div>
+</div>
+</div>
