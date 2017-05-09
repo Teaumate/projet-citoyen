@@ -1,31 +1,15 @@
 <div class="panel panel-primary">
     <div class="panel-heading clearfix">
       <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Panel header</h4>
-      <div class="btn-group pull-right">
-        <a href="/#!/carte" class="btn btn-default btn-sm">Carte</a>
-        <a href="/" class="btn btn-default btn-sm" ng-click="logout()">Logout</a>
+      <div class="">
+        <select ng-model="template" ng-options="t.name for t in templates">
+        </select>
+        <a href="/" class="btn btn-primary pull-right" ng-click="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
       </div>
     </div>
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th class="col-md-1" ng-click="orderBy('username')">username <i class="fa fa-sort" aria-hidden="true"></i></th>
-                <th ng-click="orderBy('tel')">tel <i class="fa fa-sort" aria-hidden="true"></i></th>
-                <th ng-click="orderBy('adresse')">adresse <i class="fa fa-sort" aria-hidden="true"></i></th>
-                <th ng-click="orderBy('volume')">volume <i class="fa fa-sort" aria-hidden="true"></i></th>
-                <th ng-click="orderBy('rdv')">rdv <i class="fa fa-sort" aria-hidden="true"></i></th>
-                <th ng-click="orderBy('etat')">etat <i class="fa fa-sort" aria-hidden="true"></i></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="x in res | orderBy:ordre ">
-                <td>{{x.username}}</td>
-                <td>{{x.tel}}</td>
-                <td>{{x.adresse}}</td>
-                <td>{{x.volume}}</td>
-                <td>{{x.rdv | date:'dd-MM-yyyy à h:mm' }}</td>
-                <td><input type="checkbox" ng-model=x.etat ng-click="update(x)"></tr>
-            </tr>
-        </tbody>
-    </table>
+
+  <div class="slide-animate-container">
+    <div class="slide-animate" ng-include="template.url"></div>
+  </div>
+  <div ng-if="template.name == 'carte'" id="map"></div>
 </div>

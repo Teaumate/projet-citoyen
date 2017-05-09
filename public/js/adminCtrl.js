@@ -1,6 +1,13 @@
 var adminModule = angular.module('adminModule', ['geolocation', 'ngAnimate', 'ui.bootstrap']);
-adminModule.controller('adminCtrl',['$scope', '$http', '$rootScope', 'geolocation', function($scope, $http, $rootScope, geolocation){
-
+adminModule.controller('adminCtrl',['$scope', '$http', '$rootScope', 'geolocation', 'gservice', function($scope, $http, $rootScope, geolocation, gservice){
+    $scope.templates =
+        [{ name: 'admin', url: 'partials/adminV.html'},
+        { name: 'carte', url: 'partials/carte.html'}];
+    $scope.template = $scope.templates[0];
+    
+    $scope.$watchCollection('template', function(newNames, oldNames) {
+        gservice.refresh(44.843, -0.595);
+    });
     $http.get('/users').then(function(response){
 
         // Convert the results into Google Map Format

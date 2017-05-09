@@ -1,4 +1,4 @@
-angular.module('mainApp', ['AUD', 'adminModule', 'ui.bootstrap', 'ngRoute', 'ngTouch', 'addGarbage', 'addUserCtrl', 'geolocation', 'gservice'])
+angular.module('mainApp', ['mainCtrlModule', 'AUD', 'adminModule', 'ui.bootstrap', 'ngRoute', 'ngTouch', 'addGarbage', 'addUserCtrl', 'geolocation', 'gservice'])
   .config(['$locationProvider', '$routeProvider', '$httpProvider', function config($locationProvider, $routeProvider, $httpProvider) {
       $locationProvider.hashPrefix('!');
     //================================================
@@ -78,12 +78,13 @@ angular.module('mainApp', ['AUD', 'adminModule', 'ui.bootstrap', 'ngRoute', 'ngT
         when('/admin', {
           controller: 'adminCtrl',
           templateUrl: 'partials/admin.html',
-          resolve: {
-            loggedin: checkAdmin
-          }
+          // resolve: {
+          //   loggedin: checkAdmin
+          // }
         }).
         when('/main', {
-          templateUrl: 'partials/main.html'
+          controller: 'mainControl',
+          templateUrl: 'partials/main.html'          
         }).
         when('/rdv', {
           controller: 'addUserCtrl',
