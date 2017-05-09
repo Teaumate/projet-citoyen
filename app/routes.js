@@ -107,39 +107,64 @@ module.exports = function(app, passport) {
 	// facebook -------------------------------
 
 		// send to facebook to do the authentication
-		app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+		app.get('/auth/facebook',
+            function authenticateFacebook (req, res, next) {
+                req.session.returnTo = '/#!' + req.query.returnTo; 
+                next ();
+            },passport.authenticate('facebook', { scope : 'email' }));
 
 		// handle the callback after facebook has authenticated the user
 		app.get('/auth/facebook/callback',
-			passport.authenticate('facebook', {
-				successRedirect : '/#!/main',
+            function (req, res, next) {
+                var authenticator = passport.authenticate('facebook', {
+				successRedirect : req.session.returnTo,
 				failureRedirect : '/'
-			}));
+                });
+            delete req.session.returnTo;
+            authenticator (req, res, next);
+			});
+
 
 	// twitter --------------------------------
 
 		// send to twitter to do the authentication
-		app.get('/auth/twitter', passport.authenticate('twitter', { scope : 'email' }));
+		app.get('/auth/twitter',
+            function authenticateTwitter (req, res, next) {
+                req.session.returnTo = '/#!' + req.query.returnTo; 
+                next ();
+            }, passport.authenticate('twitter', { scope : 'email' }));
 
 		// handle the callback after twitter has authenticated the user
 		app.get('/auth/twitter/callback',
-			passport.authenticate('twitter', {
-				successRedirect : '/#!/main',
-				failureRedirect : '/'
-			}));
+            function (req, res, next) {
+                var authenticator = passport.authenticate('twitter', {
+                    successRedirect : req.session.returnTo,
+                    failureRedirect : '/'
+                });
+            delete req.session.returnTo;
+            authenticator (req, res, next);
+			});
 
 
 	// google ---------------------------------
 
 		// send to google to do the authentication
-		app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+		app.get('/auth/google',
+            function authenticateGoogle (req, res, next) {
+                req.session.returnTo = '/#!' + req.query.returnTo; 
+                next ();
+            }, passport.authenticate('google', { scope : ['profile', 'email'] }));
 
 		// the callback after google has authenticated the user
 		app.get('/auth/google/callback',
-			passport.authenticate('google', {
-				successRedirect : '/#!/main',
-				failureRedirect : '/'
-			}));
+            function (req, res, next) {
+                var authenticator = passport.authenticate('google', {
+                    successRedirect : req.session.returnTo,
+                    failureRedirect : '/'
+                });
+            delete req.session.returnTo;
+            authenticator (req, res, next);
+			});
 
 // =============================================================================
 // AUTHORIZE (ALREADY LOGGED IN / CONNECTING OTHER SOCIAL ACCOUNT) =============

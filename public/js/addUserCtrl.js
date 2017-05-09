@@ -1,6 +1,6 @@
 // Creates the addCtrl Module and Controller. Note that it depends on the 'geolocation' module and service.
 var addCtrl = angular.module('addUserCtrl', ['geolocation', 'ngAnimate', 'ui.bootstrap']);
-addCtrl.controller('addUserCtrl',['$scope', '$http', '$rootScope', 'geolocation', function($scope, $http, $rootScope, geolocation){
+addCtrl.controller('addUserCtrl',['$scope', '$http', '$rootScope', 'geolocation', '$location', function($scope, $http, $rootScope, geolocation,$location){
 
     // Initializes Variables
     // ----------------------------------------------------------------------------
@@ -8,6 +8,7 @@ addCtrl.controller('addUserCtrl',['$scope', '$http', '$rootScope', 'geolocation'
     var coords = {};
     var lat = 0;
     var long = 0;
+    $scope.location = $location.path();
     $http.get('/loggedin').then(function(user){
       // Authenticated
       if (user.data !== '0'){
