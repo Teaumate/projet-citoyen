@@ -47,6 +47,9 @@
                 </div>
                 <div >
                     <pre>Date du rdv: <em>{{dt | date:'dd-MM-yyyy' }}</em></pre>
+                    <label>Heure:
+                        <select class="form-control" ng-model="heure" ng-options="heure.name for heure in heures"></select>
+                    </label><br/>
                     <div style="display:inline-block; min-height:290px;">
                     <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
                     </div>

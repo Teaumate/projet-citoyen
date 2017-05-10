@@ -6,7 +6,8 @@ adminModule.controller('adminCtrl',['$scope', '$http', '$rootScope', 'geolocatio
     $scope.template = $scope.templates[0];
     
     $scope.$watchCollection('template', function(newNames, oldNames) {
-        gservice.refresh(44.843, -0.595);
+        if(newNames.name === 'carte')
+            gservice.refresh(44.843, -0.595);
     });
     $http.get('/users').then(function(response){
 
@@ -28,8 +29,10 @@ adminModule.controller('adminCtrl',['$scope', '$http', '$rootScope', 'geolocatio
             
         }, function(){});
     };
-
+    $scope.reverse = true;
+    $scope.ordre = 'etat';
     $scope.orderBy = function(x) {
+        $scope.reverse = ($scope.ordre === x) ? !$scope.reverse : false;
         $scope.ordre = x;
     };
 }]);

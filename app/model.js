@@ -7,6 +7,7 @@ var garbageSchema = new Schema({
     tel:      {type: String, required: false},
     volume:   {type: String, required: false},
     rdv:      {type: Date, required: false},
+    heure:    {type: String, required: false},
     location: {type: [Number], required: false}, // [Long, Lat]
     etat:     {type: Boolean, required: false} ,
     htmlverified: String,

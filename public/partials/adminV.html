@@ -1,21 +1,29 @@
     <table class="table table-condensed">
         <thead>
             <tr>
-                <th class="col-md-1" ng-click="orderBy('username')">username <i class="fa fa-sort" aria-hidden="true"></i></th>
-                <th ng-click="orderBy('tel')">tel <i class="fa fa-sort" aria-hidden="true"></i></th>
-                <th ng-click="orderBy('adresse')">adresse <i class="fa fa-sort" aria-hidden="true"></i></th>
-                <th ng-click="orderBy('volume')">volume <i class="fa fa-sort" aria-hidden="true"></i></th>
-                <th ng-click="orderBy('rdv')">rdv <i class="fa fa-sort" aria-hidden="true"></i></th>
-                <th ng-click="orderBy('etat')">etat <i class="fa fa-sort" aria-hidden="true"></i></th>
+                <th class="col-md-1">username</th>
+                <th>tel</th>
+                <th ng-click="orderBy('adresse')">adresse  
+                    <span ng-class="{reverse:reverse}" ng-show="ordre === 'adresse'" class="sortorder"></span>
+                </th>
+                <th ng-click="orderBy('volume')">volume  
+                    <span ng-class="{reverse:reverse}" ng-show="ordre === 'volume'" class="sortorder"></span>
+                </th>
+                <th ng-click="orderBy('rdv')">rdv  
+                    <span ng-class="{reverse:reverse}" ng-show="ordre === 'rdv'" class="sortorder"></span>
+                </th>
+                <th ng-click="orderBy('etat')">etat 
+                    <span ng-class="{reverse:reverse}" ng-show="ordre === 'etat'" class="sortorder"></span>
+                </th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="x in res | orderBy:ordre ">
+            <tr ng-repeat="x in res | orderBy:ordre:reverse ">
                 <td>{{x.username}}</td>
                 <td>{{x.tel}}</td>
                 <td>{{x.adresse}}</td>
                 <td>{{x.volume}}</td>
-                <td>{{x.rdv | date:'dd-MM-yyyy à h:mm' }}</td>
+                <td>{{x.rdv | date:'dd-MM' }}</td>
                 <td><input type="checkbox" ng-model=x.etat ng-click="update(x)"></tr>
             </tr>
         </tbody>

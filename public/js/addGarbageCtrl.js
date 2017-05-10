@@ -51,6 +51,7 @@ angular.module('addGarbage', ['geolocation', 'gservice'])
             tel: $scope.tel,
             volume: $scope.selectedName,
             rdv: $scope.rdv,
+            etat: false,
             location: [coords.long, coords.lat],
             htmlverified: $scope.htmlverified
         };

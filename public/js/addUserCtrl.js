@@ -4,6 +4,13 @@ addCtrl.controller('addUserCtrl',['$scope', '$http', '$rootScope', 'geolocation'
 
     // Initializes Variables
     // ----------------------------------------------------------------------------
+    $scope.heures = [
+      {name:'08 - 10'},
+      {name:'10 - 12'},
+      {name:'14 - 16'},
+      {name:'16 - 18'}
+    ];
+    $scope.heure = $scope.heures[0]; 
     $scope.formData = {};
     var coords = {};
     var lat = 0;
@@ -90,6 +97,8 @@ addCtrl.controller('addUserCtrl',['$scope', '$http', '$rootScope', 'geolocation'
             tel: $scope.formData.tel,
             volume: $scope.formData.typeEncombrant,
             rdv: $scope.dt,
+            heure: $scope.heure.name,
+            etat: false,
             location: [$scope.formData.longitude, $scope.formData.latitude],
             htmlverified: $scope.formData.htmlverified
         };
@@ -97,7 +106,7 @@ addCtrl.controller('addUserCtrl',['$scope', '$http', '$rootScope', 'geolocation'
         // Saves the user data to the db
         $http.post('/users', userData)
             .then(function (data) {
-
+                $scope.formData = {};
                 // Once complete, clear the form (except location)
                 // $scope.formData.username = "";
                 // $scope.formData.adresse = "";
