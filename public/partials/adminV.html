@@ -12,6 +12,9 @@
                 <th ng-click="orderBy('rdv')">rdv  
                     <span ng-class="{reverse:reverse}" ng-show="ordre === 'rdv'" class="sortorder"></span>
                 </th>
+                <th ng-click="orderBy('heure')">heure  
+                    <span ng-class="{reverse:reverse}" ng-show="ordre === 'heure'" class="sortorder"></span>
+                </th>
                 <th ng-click="orderBy('etat')">etat 
                     <span ng-class="{reverse:reverse}" ng-show="ordre === 'etat'" class="sortorder"></span>
                 </th>
@@ -24,6 +27,7 @@
                 <td>{{x.adresse}}</td>
                 <td>{{x.volume}}</td>
                 <td>{{x.rdv | date:'dd-MM' }}</td>
+                <td>{{x.heure }}</td>
                 <td><input type="checkbox" ng-model=x.etat ng-click="update(x)"></tr>
             </tr>
         </tbody>
