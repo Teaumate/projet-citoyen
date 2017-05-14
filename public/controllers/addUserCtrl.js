@@ -98,7 +98,6 @@ addCtrl.controller('addUserCtrl',['$scope', '$http', '$rootScope', 'geolocation'
             volume: $scope.formData.typeEncombrant,
             rdv: $scope.dt,
             heure: $scope.heure.name,
-            etat: false,
             location: [$scope.formData.longitude, $scope.formData.latitude],
             htmlverified: $scope.formData.htmlverified
         };

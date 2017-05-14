@@ -1,7 +1,7 @@
 // Dependencies
 var mongoose        = require("mongoose");
 mongoose.Promise    = require('bluebird');
-var User            = require('./model.js');
+var User            = require('./models/model');
 
 // Opens App Routes
 module.exports = function(app, passport) {

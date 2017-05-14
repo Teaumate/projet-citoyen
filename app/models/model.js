@@ -9,7 +9,7 @@ var garbageSchema = new Schema({
     rdv:      {type: Date, required: false},
     heure:    {type: String, required: false},
     location: {type: [Number], required: false}, // [Long, Lat]
-    etat:     {type: Boolean, required: false} ,
+    etat:     {type: Boolean, default:false, required: false} ,
     htmlverified: String,
     created_at: {type: Date, default: Date.now},
     updated_at: {type: Date, default: Date.now}

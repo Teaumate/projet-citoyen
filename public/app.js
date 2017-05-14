@@ -77,25 +77,25 @@ angular.module('mainApp', ['mainCtrlModule', 'AUD', 'adminModule', 'ui.bootstrap
       $routeProvider.
         when('/admin', {
           controller: 'adminCtrl',
-          templateUrl: 'partials/admin.html',
+          templateUrl: 'views/admin.html',
           // resolve: {
           //   loggedin: checkAdmin
           // }
         }).
         when('/main', {
           controller: 'mainControl',
-          templateUrl: 'partials/main.html'          
+          templateUrl: 'views/main.html'          
         }).
         when('/rdv', {
           controller: 'addUserCtrl',
-          templateUrl: 'partials/rdv.html'
+          templateUrl: 'views/rdv.html'
         }).
         when('/mobile', {
             controller: 'addGarbageCtrl',
-            templateUrl: 'partials/mobile.html'
+            templateUrl: 'views/mobile.html'
         }).
         when('/auth', {
-            templateUrl: 'partials/auth.html'
+            templateUrl: 'views/auth.html'
         }).
         otherwise('/main');
     }
