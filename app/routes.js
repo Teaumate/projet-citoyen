@@ -9,7 +9,9 @@ module.exports = function(app, passport) {
     //==================================================================
     // route to test if the user is admin in or not
     app.get('/isAdmin', function(req, res) {
-        res.send((req.isAuthenticated() && req.user.google.email==="charlotte14@gmail.com") ? req.user : '0');
+        res.send((req.isAuthenticated() && 
+                    ((req.user.google.email==="charlotte14@gmail.com")||
+                    (req.user.local.email==="admin"))) ? req.user : '0');
     });
     // route to test if the user is logged in or not
     app.get('/loggedin', function(req, res) {

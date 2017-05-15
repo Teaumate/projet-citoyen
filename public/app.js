@@ -78,9 +78,9 @@ angular.module('mainApp', ['mainCtrlModule', 'AUD', 'adminModule', 'ui.bootstrap
         when('/admin', {
           controller: 'adminCtrl',
           templateUrl: 'views/admin.html',
-          // resolve: {
-          //   loggedin: checkAdmin
-          // }
+          resolve: {
+            loggedin: checkAdmin
+          }
         }).
         when('/main', {
           controller: 'mainControl',
@@ -93,9 +93,6 @@ angular.module('mainApp', ['mainCtrlModule', 'AUD', 'adminModule', 'ui.bootstrap
         when('/mobile', {
             controller: 'addGarbageCtrl',
             templateUrl: 'views/mobile.html'
-        }).
-        when('/auth', {
-            templateUrl: 'views/auth.html'
         }).
         otherwise('/main');
     }
