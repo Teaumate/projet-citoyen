@@ -23,7 +23,7 @@
     "express-session": "^1.15.2",
     "modernizr": "^3.4.0",
     "mongoose": "^4.9.4",
-    "nodemon": "^1.11.0",
+    "nodemon": "^1.14.11",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
